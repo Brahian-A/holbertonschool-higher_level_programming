@@ -4,3 +4,4 @@ import sys
 def print_battery_street():
     number = 333
     print(f"{number} Battery street")
+print_battery_street()
