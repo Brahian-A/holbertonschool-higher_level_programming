@@ -2,5 +2,5 @@
 import sys
 
 def print_battery_street():
-    number = 98
+    number = 333
     print(f"{number} Battery street")
