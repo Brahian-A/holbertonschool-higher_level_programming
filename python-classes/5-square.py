@@ -26,7 +26,8 @@ class Square:
     
     def my_print(self):
         mul = self.__size
-        
+        if mul <= 0:
+            return None 
         for i in range(mul):
             for j in range(mul):
                 print("#", end="")
