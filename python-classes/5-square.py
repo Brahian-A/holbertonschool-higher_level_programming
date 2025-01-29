@@ -29,5 +29,5 @@ class Square:
         
         for i in range(mul):
             for j in range(mul):
-                print("#", end=" ")
+                print("#", end="")
             print()
