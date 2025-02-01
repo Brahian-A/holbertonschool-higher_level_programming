@@ -23,7 +23,7 @@ class Square:
     @property
     def position(self):
         return self.__position
-    
+
     @position.setter
     def position(self, value):
         # Validamos que position sea una tupla de 2 enteros positivos
@@ -42,4 +42,4 @@ class Square:
         print("\n" * self.__position[1], end="")
         for e in range(self.__size):
             print(" " * self.__position[0] + "#" * self.__size)
-   
+    
