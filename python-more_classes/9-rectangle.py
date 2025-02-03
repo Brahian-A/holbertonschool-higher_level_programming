@@ -74,7 +74,6 @@ class Rectangle:
     def square(cls, size=0):
         return cls(size, size)
 
-
     def __del__(self):
         print('Bye rectangle...')
         Rectangle.number_of_instances -= 1
