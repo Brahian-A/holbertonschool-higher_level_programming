@@ -41,12 +41,12 @@ class Rectangle:
         return ((self.__height * 2) + (self.__width * 2))
     
     def my_prrint(self):
-        if (self.__height or self.__width) ==0:
+        if (self.__height or self.__width) == 0:
             print()
         for i in range(self.__height):
             print("#" * self.__width)
 
     def __str__(self):
-        if (self.__height or self.__width) ==0:
+        if (self.__height or self.__width) == 0:
             return ""
         return "\n".join("#" * self.__width for i in range(self.__height))
