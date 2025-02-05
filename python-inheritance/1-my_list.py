@@ -3,9 +3,8 @@
 
 class MyList(list):
 
-
+    """Método que imprime la lista ordenada"""
     def print_sorted(self):
-        """Método que imprime la lista ordenada"""
         sorted = self.copy()
         sorted.sort()
         print(sorted)
