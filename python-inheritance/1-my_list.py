@@ -1,7 +1,11 @@
 #!/usr/bin/python3
 class MyList(list):
-    """ Clase que hereda las referencias de los atributos de la lista de clases """
+    """ Clase que hereda las referencias de los atributos de la lista de clases
+    
+    Args:
+        list: class list
 
+    """
 
     def print_sorted(self):
         """Método que imprime la lista ordenada"""
