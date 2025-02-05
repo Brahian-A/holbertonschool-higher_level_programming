@@ -5,6 +5,4 @@ class MyList(list):
 
     """Método que imprime la lista ordenada"""
     def print_sorted(self):
-        sorted = self.copy()
-        sorted.sort()
-        print(sorted)
+        print(sorted(self))
