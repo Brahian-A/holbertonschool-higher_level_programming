@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+class MyList(list):
+    """ Clase que hereda las referencias de los atributos de la lista de clases """
 
-""" definimos una funcion que busca los atributos de un objeto"""
 
-
-def lookup(obj):
-    """ retorna una lista con todos los atributos"""
-    return (dir(obj))
+    def print_sorted(self):
+        """Método que imprime la lista ordenada"""
+        sorted = self.copy()
+        sorted.sort()
+        print(sorted)
