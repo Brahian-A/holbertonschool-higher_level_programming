@@ -3,6 +3,6 @@
 def safe_print_integer(value):
     try:
         print("{:d}".format(value))
-        return 1
+        return True
     except (ValueError, TypeError):
-        return 0
+        return False
