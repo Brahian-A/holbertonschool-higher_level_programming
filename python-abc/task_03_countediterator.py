@@ -12,4 +12,3 @@ class CountedIterator():
         item = next(self.__iter)
         self.__counter += 1
         return item
-    
