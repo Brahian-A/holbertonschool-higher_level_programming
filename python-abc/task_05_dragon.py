@@ -1,7 +1,7 @@
 #!/usr/bin env python3
 
 class SwimMixin():
-    def swin(self):
+    def swim(self):
         print("The creature swims!")
 
 class FlyMixin:
