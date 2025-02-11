@@ -4,5 +4,5 @@
 
 def read_file(filename=""):
     """funcion que abre y printea el contenido de un archivo UTF8"""
-    with open(filename) as contenido:
-        return (print(contenido.read()))
+    with open(filename, 'r') as contenido:
+        print(contenido.read())
