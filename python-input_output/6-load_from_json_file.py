@@ -6,6 +6,5 @@ import json
 
 def load_from_json_file(filename):
     """funcion"""
-    with open(filename, 'r') as contenido:
-        data = json.loads(contenido)
-        return data
+    with open(filename, encoding='utf-8') as contenido:
+        return (json.loads(contenido.read()))
