@@ -24,7 +24,7 @@ def fetch_and_save_posts():
         print("No hay datos para guardar.")
         return
 
-    fieldnames = ["id", "title", "body"]
+    fieldnames = ["id", "title", "body", "userId"]
 
     with open("posts.csv", mode="w", newline="",
               encoding="utf-8") as csv_file:
