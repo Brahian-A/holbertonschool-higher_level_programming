@@ -19,8 +19,9 @@ def fetch_and_save_posts():
         posts = response.json()
         fieldnames = ["id", "title", "body"]
 
-        with open("posts.csv", mode="w", newline="", encoding="utf-8") as csv_file:
-            writer = csv.DictWriter(csv_file, fieldnames= fieldnames)
+        with open("posts.csv", mode="w", newline="",
+                  encoding="utf-8") as csv_file:
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
             writer.writeheader()
             for post in posts:
                 writer.writerow({key: post[key] for key in fieldnames})
@@ -28,6 +29,7 @@ def fetch_and_save_posts():
         print("Los posts se han guardado en posts.csv")
     else:
         print("Error al obtener los datos.")
+
 
 if __name__ == "__main__":
     fetch_and_print_posts()
