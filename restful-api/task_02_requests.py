@@ -20,7 +20,7 @@ def fetch_and_print_posts():
 def fetch_and_save_posts(posts):
     if not posts:
         print("No hay datos para guardar.")
-        return posts
+        return
 
     fieldnames = ["id", "title", "body"]
 
