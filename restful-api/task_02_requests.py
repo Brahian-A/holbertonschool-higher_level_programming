@@ -18,7 +18,8 @@ def fetch_and_print_posts():
     return []
 
 
-def fetch_and_save_posts(posts):
+def fetch_and_save_posts():
+    posts = fetch_and_print_posts()
     if not posts:
         print("No hay datos para guardar.")
         return
@@ -36,5 +37,4 @@ def fetch_and_save_posts(posts):
 
 
 if __name__ == "__main__":
-    posts = fetch_and_print_posts()
-    fetch_and_save_posts(posts)
+    fetch_and_save_posts()
