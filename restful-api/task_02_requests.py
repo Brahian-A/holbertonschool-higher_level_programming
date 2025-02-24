@@ -25,13 +25,14 @@ def fetch_and_save_posts():
         return
 
     fieldnames = ["id", "title", "body", "userId"]
+    filtered_posts = [{k: post[k] for k in fieldnames} for post in posts]
 
     with open("posts.csv", mode="w", newline="",
               encoding="utf-8") as csv_file:
 
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
-        writer.writerows(posts)
+        writer.writerows(filtered_posts)
 
     print("Los posts se han guardado en posts.csv")
 
