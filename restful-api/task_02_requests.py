@@ -17,23 +17,21 @@ def fetch_and_print_posts():
     return []
 
 
-def fetch_and_save_posts():
-    response = requests.get(URL)
+def fetch_and_save_posts(posts):
+    if not posts:
+        print("No hay datos para guardar.")
+        return
 
-    if response.status_code == 200:
-        posts = response.json()
-        fieldnames = ["id", "title", "body"]
+    fieldnames = ["id", "title", "body"]
 
-        with open("posts.csv", mode="w", newline="",
-                  encoding="utf-8") as csv_file:
-            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-            writer.writeheader()
-            for post in posts:
-                writer.writerow({key: post[key] for key in fieldnames})
+    with open("posts.csv", mode="w", newline="",
+              encoding="utf-8") as csv_file:
 
-        print("Los posts se han guardado en posts.csv")
-    else:
-        print("Error al obtener los datos.")
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(posts)
+
+    print("Los posts se han guardado en posts.csv")
 
 
 if __name__ == "__main__":
