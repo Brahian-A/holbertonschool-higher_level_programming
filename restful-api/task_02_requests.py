@@ -8,9 +8,14 @@ def fetch_and_print_posts():
     response = requests.get(URL)
 
     if response.status_code == 200:
-        return response.json()
+        posts = response.json()
+        for post in posts:
+            print(post["title"])
+        return posts
+
     print("Error al obtener los datos.")
     return []
+
 
 def fetch_and_save_posts():
     response = requests.get(URL)
