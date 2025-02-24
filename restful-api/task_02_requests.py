@@ -1,20 +1,15 @@
 import requests
 import csv
 
-
 URL = "https://jsonplaceholder.typicode.com/posts"
 
 
 def fetch_and_print_posts():
     response = requests.get(URL)
-    print(f"Status Code: {response.status_code}")
 
     if response.status_code == 200:
-        posts = response.json()
-        for post in posts:
-            print(post["title"])
-    else:
-        print("Error al obtener los datos.")
+        return response.json()
+    print("Error al obtener los datos.")
 
 
 def fetch_and_save_posts():
@@ -22,21 +17,18 @@ def fetch_and_save_posts():
 
     if response.status_code == 200:
         posts = response.json()
+        fieldnames = ["id", "title", "body"]
 
-        filtered_posts = ["id", "title", "body"]
-
-        with open("posts.csv", mode="w", newline="", encoding="utf-8") as file:
-            writer = csv.DictWriter(file, fieldnames=["id", "title", "body"])
+        with open("posts.csv", mode="w", newline="", encoding="utf-8") as csv_file:
+            writer = csv.DictWriter(csv_file, fieldnames= fieldnames)
             writer.writeheader()
-            writer.writerows(posts)
-            writer.writerows(filtered_posts)
+            for post in posts:
+                writer.writerow({key: post[key] for key in fieldnames})
 
         print("Los posts se han guardado en posts.csv")
     else:
         print("Error al obtener los datos.")
 
-
 if __name__ == "__main__":
-
     fetch_and_print_posts()
     fetch_and_save_posts()
