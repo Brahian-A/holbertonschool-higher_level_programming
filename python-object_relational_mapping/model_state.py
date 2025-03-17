@@ -1,5 +1,7 @@
 #!/usr/bin/python3
+
 """Iniciar clase de enlace a la tabla en la base de datos"""
+
 import sys
 from model_state import Base, State
 
