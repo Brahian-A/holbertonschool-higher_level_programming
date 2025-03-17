@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# Enumera todos los estados de la base de datos HBTN_0E_0_USA
+""" Enumera todos los estados de la base de datos HBTN_0E_0_USA """
 
 if __name__ == '__main__':
     import MySQLdb
