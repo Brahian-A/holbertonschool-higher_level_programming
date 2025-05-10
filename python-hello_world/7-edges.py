@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 word = "Holberton"
 letter3 = word[:3]
 print(f"First 3 letters: {letter3}")
