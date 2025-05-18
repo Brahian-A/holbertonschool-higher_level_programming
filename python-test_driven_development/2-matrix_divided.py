@@ -4,7 +4,7 @@ Function that divides all elements of a matrix.
 """
 
 def matrix_divided(matrix, div):
-    # Validación de que la matriz es una lista de listas
+    " Validación de que la matriz es una lista de listas"
     # y que cada elemento es un entero o un flotante
     if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
         raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
