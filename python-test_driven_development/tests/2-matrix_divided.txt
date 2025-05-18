@@ -1,0 +1,94 @@
+test 1:
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+>>> matrix = [[2, 4, 6], [8, 10, 12]]
+>>> div = 2
+>>> matrix_divided(matrix, div)
+[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+
+test 2:
+>>> matrix = [[1.5, 2.5, 3.5], [4.5, 5.5, 6.5]]
+>>> div = 1.5
+>>> matrix_divided(matrix, div)
+[[1.0, 1.67, 2.33], [3.0, 3.67, 4.33]]
+
+test 3:
+>>> matrix = [[10, 20], [30, 40]]
+>>> div = -2
+>>> matrix_divided(matrix, div)
+[[-5.0, -10.0], [-15.0, -20.0]]
+
+test 4:
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+>>> div = 3
+>>> matrix_divided(matrix, div)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+test 5:
+>>> matrix = [[9, 18], [27, 36]]
+>>> div = 1
+>>> matrix_divided(matrix, div)
+[[9.0, 18.0], [27.0, 36.0]]
+
+test 6:
+>>> matrix = [[1, 2], [3, 4]]
+>>> div = 0
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+    ...
+ZeroDivisionError: division by zero
+
+test 7:
+>>> matrix = "not a matrix"
+>>> div = 2
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+test 8:
+>>> matrix = [[1, 2], [3, 4, 5]]
+>>> div = 2
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+    ...
+TypeError: Each row of the matrix must have the same size
+
+test 9:
+>>> matrix = [[1, 2], [3, 4]]
+>>> div = "not a number"
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+    ...
+TypeError: div must be a number
+
+test 10:
+>>> matrix = [[1, 2], [3, 4]]
+>>> div = float('inf')
+>>> matrix_divided(matrix, div)
+[[0.0, 0.0], [0.0, 0.0]]
+
+test 11:
+>>> matrix = [[1, 2], [3, 4]]
+>>> div = float('nan')
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+    ...
+ZeroDivisionError: division by zero
+
+test 12:
+>>> matrix_divided([[1, 2], [3, 4]])
+Traceback (most recent call last):
+    ...
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+test 13:
+>>> matrix_divided()
+Traceback (most recent call last):
+    ...
+TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+test 14:
+>>> matrix = []
+>>> div = 2
+>>> matrix_divided(matrix, div)
+[]
