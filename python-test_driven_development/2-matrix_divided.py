@@ -3,15 +3,21 @@
 Function that divides all elements of a matrix.
 """
 
+
 def matrix_divided(matrix, div):
     " Validación de que la matriz es una lista de listas"
     # y que cada elemento es un entero o un flotante
-    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+    if not isinstance(matrix, list) or not all(
+            isinstance(row, list) for row in matrix):
+        raise TypeError(
+            "matrix must be a matrix (list of lists) of integers/floats")
 
     for row in matrix:
-        if not all(isinstance(elem, (int, float)) for elem in row):
-            raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+        if not all(
+            isinstance(elem, (int, float)) for elem in row
+        ):
+            raise TypeError(
+                "matrix must be a matrix (list of lists) of integers/floats")
 
     # Validación de que cada fila tiene el mismo tamaño
     row_length = len(matrix[0])
@@ -25,7 +31,7 @@ def matrix_divided(matrix, div):
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    # Se crea una nueva matriz dividida por el divisor y se redondea a 2 decimales
+    # nueva matriz dividida por el divisor y se redondea a 2 decimales
     new_matrix = []
     for row in matrix:
         new_row = []
