@@ -1,0 +1,72 @@
+>>> add_integer = __import__('0-add_integer').add_integer
+
+test 1:
+
+>>> add_integer(1, 2)
+3
+
+test 2:
+>>> add_integer(29, 5)
+34
+
+test 3:
+>>> add_integer(2000, 3)
+2003
+
+test 4:
+>>> add_integer(21, 31)
+52
+
+test 5:
+>>> add_integer(89.9, 1)
+90
+
+test 6:
+>>> add_integer(89.9, 8.8)
+97
+
+test 7:
+>>> add_integer(4.4, 5.5)
+9
+
+test 8:
+>>> add_integer(1.7, 3.2)
+4
+
+test 9:
+>>> add_integer("7", 3)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+test 10:
+>>> add_integer(11, "Hola")
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+
+test 11:
+>>> add_integer(1000, -200)
+800
+
+test 12:
+>>> add_integer(float('inf'), 1)
+Traceback (most recent call last):
+    ...
+OverflowError: cannot convert float infinity to integer
+
+test 13:
+>>> add_integer(float('nan'), 1)
+Traceback (most recent call last):
+    ...
+ValueError: cannot convert float NaN to integer
+
+test 14:
+>>> add_integer(1)
+99
+
+test 15:
+>>> add_integer()
+Traceback (most recent call last):
+    ...
+TypeError: add_integer() missing 1 required positional argument: 'a'
