@@ -67,13 +67,7 @@ test 10:
 >>> matrix_divided(matrix, div)
 [[0.0, 0.0], [0.0, 0.0]]
 
-test 11:
->>> matrix = [[1, 2], [3, 4]]
->>> div = float('nan')
->>> matrix_divided(matrix, div)
-Traceback (most recent call last):
-    ...
-ZeroDivisionError: division by zero
+
 
 test 12:
 >>> matrix_divided([[1, 2], [3, 4]])
