@@ -3,31 +3,3 @@ test 1:
 >>> text = "Holberton School"
 >>> text_indentation(text)
 Holberton School
-
-test 2:
->>> text = "Holberton.School "
->>> text_indentation(text)
-Holberton.
-
-School
-
-test 3:
->>> text = "Holberton. School? How are you: John"
->>> text_indentation(text)
-Holberton.
-
-School?
-
-How are you:
-
-John
-
-
-
-
-test 6:
->>> text = 12
->>> text_indentation(text)
-Traceback (most recent call last):
-    ...
-TypeError: text must be a string

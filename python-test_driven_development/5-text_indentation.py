@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-modulo que define una funcion 
+modulo que define una funcion
 que imprime un texto con 2 saltos de linea
 despues de cada '.', '?', y ':'.
 """
