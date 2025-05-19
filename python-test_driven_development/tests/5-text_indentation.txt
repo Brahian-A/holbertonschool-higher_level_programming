@@ -10,3 +10,12 @@ test 2:
 Traceback (most recent call last):
     ...
 TypeError: text must be a string
+
+test 3:
+>>> text_indentation = __import__('4-text_indentation').text_indentation
+>>> text_indentation("Hello. How are you? Fine:")
+Hello
+
+How are you
+
+Fine
