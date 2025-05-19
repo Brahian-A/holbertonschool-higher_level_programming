@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""En este modulo creamos una clase con el atributo privado size"""
+"""En este modulo creamos una clase Square"""
 
 
 class Square():
