@@ -5,11 +5,11 @@ My name is John Doe
 
 test 2:
 >>> say_my_name("Brahian")
-My name is Brahian
+My name is Brahian 
 
 test 3:
 >>> say_my_name("Pepe", "")
-My name is Pepe
+My name is Pepe 
 
 test 4:
 >>> say_my_name("", "Amaral")
