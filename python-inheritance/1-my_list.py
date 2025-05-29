@@ -3,7 +3,7 @@
 
 
 class MyList(list):
-
+    """Clase que hereda list y agrega un metodo para imprimir la lista ordenada"""
     def print_sorted(self):
         "metodo que imprime una lista ordenada"
         print(sorted(self))
