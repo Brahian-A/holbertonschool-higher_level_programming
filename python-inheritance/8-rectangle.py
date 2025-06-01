@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from base_geometry import BaseGeometry
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 """Módulo que contiene la clase Rectangle"""
 
