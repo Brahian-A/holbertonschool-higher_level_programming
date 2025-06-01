@@ -19,6 +19,12 @@ Traceback (most recent call last):
 ValueError: height must be greater than 0
 
 test6:
+>>> BaseGeometry().integer_validator("age", 1)
+Traceback (most recent call last):
+    ...
+ValueError: age must be greater than 1
+
+test6:
 >>> BaseGeometry().integer_validator("age", 0)
 Traceback (most recent call last):
     ...
