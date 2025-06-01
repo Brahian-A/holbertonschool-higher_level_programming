@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./python-inheritance/7-",
+        "./python-inheritance/7-"
+    ]
+}
