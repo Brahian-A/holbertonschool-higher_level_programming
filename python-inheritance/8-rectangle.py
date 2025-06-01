@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """Módulo que contiene la clase Rectangle"""
-
-
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
 
 class Rectangle(BaseGeometry):
     """Clase Rectangle que hereda de BaseGeometry y valida ancho y alto."""
