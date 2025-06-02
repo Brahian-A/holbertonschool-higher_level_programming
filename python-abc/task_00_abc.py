@@ -1,7 +1,7 @@
 #!usr/bin/python3
 from abc import ABC, abstractclassmethod
 """Creamos una clase abstracta con
-un metodo sound """
+un metodo sound"""
 
 class Animal(ABC):
     @abstractclassmethod
@@ -10,8 +10,10 @@ class Animal(ABC):
 
 
 class Dog(Animal):
-    print("Bark")
+   def sound():
+        print("Bark")
 
 
 class Cat(Animal):
-    print("Meow")
+    def sound():
+        print("Meow")
