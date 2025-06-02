@@ -10,10 +10,10 @@ class Animal(ABC):
 
 
 class Dog(Animal):
-   def sound():
-        print("Bark")
+   def sound(self):
+        return 'Bark'
 
 
 class Cat(Animal):
-    def sound():
-        print("Meow")
+    def sound(sefl):
+        return 'Meow'
