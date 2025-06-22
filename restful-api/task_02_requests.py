@@ -34,7 +34,7 @@ def fetch_and_save_posts():
         writer.writeheader()
         writer.writerows(filtered_posts)
 
-    print("Los posts se han guardado en posts.csv")
+    print("Los posts se guardaron en posts.csv")
 
 
 if __name__ == "__main__":
