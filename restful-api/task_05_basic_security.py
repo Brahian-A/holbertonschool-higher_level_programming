@@ -1,103 +1,116 @@
 from flask import Flask, jsonify, request
 from flask_httpauth import HTTPBasicAuth
-from flask_jwt_extended import (
-    create_access_token, get_jwt_identity, get_jwt,
-    jwt_required, JWTManager, verify_jwt_in_request
-)
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_jwt_extended import (
+    JWTManager, create_access_token, get_jwt_identity, get_jwt,
+    jwt_required, verify_jwt_in_request
+)
 from functools import wraps
 
+# Inicializar la app Flask
 app = Flask(__name__)
-app.config["JWT_SECRET_KEY"] = "secret"  # Clave secreta para firmar tokens JWT
+app.config["JWT_SECRET_KEY"] = "super_secret_key"  # Clave secreta para JWT
 
+# Autenticadores
 auth = HTTPBasicAuth()
 jwt = JWTManager(app)
 
-# Usuarios definidos con contraseña encriptada y rol
+# Base de datos en memoria con usuarios y sus roles
 users = {
-    "user1": {"username": "user1", "password": generate_password_hash("password"), "role": "user"},
-    "admin1": {"username": "admin1", "password": generate_password_hash("password"), "role": "admin"}
+    "user1": {
+        "username": "user1",
+        "password": generate_password_hash("password"),
+        "role": "user"
+    },
+    "admin1": {
+        "username": "admin1",
+        "password": generate_password_hash("password"),
+        "role": "admin"
+    }
 }
 
-# Manejadores personalizados para distintos errores con tokens JWT
+
+# Manejo de errores con JWT
+
 @jwt.unauthorized_loader
 def handle_unauthorized_error(err):
-    return jsonify({"error": "Token faltante o inválido"}), 401
+    return jsonify({"error": "Missing or invalid token"}), 401
 
 @jwt.invalid_token_loader
 def handle_invalid_token_error(err):
-    return jsonify({"error": "Token inválido"}), 401
+    return jsonify({"error": "Invalid token"}), 401
 
 @jwt.expired_token_loader
-def handle_expired_token_error(err):
-    return jsonify({"error": "Token expirado"}), 401
+def handle_expired_token_error(err, payload):
+    return jsonify({"error": "Token has expired"}), 401
 
 @jwt.revoked_token_loader
-def handle_revoked_token_error(err):
-    return jsonify({"error": "Token revocado"}), 401
+def handle_revoked_token_error(jwt_header, jwt_payload):
+    return jsonify({"error": "Token has been revoked"}), 401
 
 @jwt.needs_fresh_token_loader
-def handle_needs_fresh_token_error(err):
-    return jsonify({"error": "Se requiere un token fresco"}), 401
+def handle_needs_fresh_token_error(jwt_header, jwt_payload):
+    return jsonify({"error": "Fresh token required"}), 401
 
-# Decorador personalizado que permite el acceso solo a administradores
+# verificador de contraseña 
+
+@auth.verify_password
+def verify_password(username, password):
+    user = users.get(username)
+    if user and check_password_hash(user["password"], password):
+        return user
+    return None
+
+# decorador para acecso de admin
+
 def admin_required():
     def wrapper(fn):
         @wraps(fn)
         def decorator(*args, **kwargs):
             verify_jwt_in_request()
             claims = get_jwt()
-            if claims["role"] == 'admin':
+            if claims.get("role") == "admin":
                 return fn(*args, **kwargs)
             else:
-                return jsonify({"error": "Acceso solo para administradores"}), 403
+                return jsonify({"error": "Admin access required"}), 403
         return decorator
     return wrapper
 
-# Verificación de usuario y contraseña
-@auth.verify_password
-def verify_password(username, password):
-    if username not in users:
-        return None
+# rutas
 
-    if check_password_hash(users[username]["password"], password):
-        return users[username]
-
-# Ruta protegida con autenticación básica
+# ruta protegida
 @app.route('/basic-protected')
 @auth.login_required
-def index():
-    return "Autenticación Básica: Acceso permitido", 200
+def basic_protected():
+    return "Basic Auth: Access Granted", 200
 
-# Ruta para hacer login y obtener un token JWT
-@app.route("/login", methods=["POST"])
+# ruta para genrar token 
+@app.route('/login', methods=['POST'])
 def login():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
-
     user = verify_password(username, password)
-    if not user:
-        return jsonify({"msg": "Usuario o contraseña incorrectos"}), 401
 
-    # Se agregan datos personalizados
+    if not user:
+        return jsonify({"msg": "Bad username or password"}), 401
+
+    # Incluir el rol en el token
     additional_claims = {"role": user["role"]}
     access_token = create_access_token(identity=username, additional_claims=additional_claims)
-    return jsonify(access_token=access_token)
+    return jsonify(access_token=access_token), 200
 
-# Ruta protegida con token JWT válido
-@app.route("/jwt-protected")
+# Ruta protegida con JWT
+@app.route('/jwt-protected')
 @jwt_required()
-def protected():
-    current_user = get_jwt_identity()  # Obtener el usuario del token
-    return "Autenticación JWT: Acceso permitido", 200
+def jwt_protected():
+    return "JWT Auth: Access Granted", 200
 
-# Ruta solo accesible para usuarios con rol "admin"
+# Ruta solo para administradores
 @app.route('/admin-only')
 @admin_required()
-def admins_only():
-    current_user = get_jwt_identity()
-    return "Acceso de administrador: permitido", 200
+def admin_only():
+    return "Admin Access: Granted", 200
 
-# Ejecutar la app
+# Ejecutar la aplicación
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0", port=5000)
