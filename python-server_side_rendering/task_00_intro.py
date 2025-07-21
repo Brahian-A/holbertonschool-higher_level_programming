@@ -1,6 +1,6 @@
 import os
 
-def genera_invitacion(template, attendees):
+def generate_invitations(template, attendees):
     # Verificar tipos de entrada
     if not isinstance(template, str):
         print("Error: Template must be a string.")
